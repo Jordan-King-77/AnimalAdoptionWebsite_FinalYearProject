@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalAdoptionWebsite_FinalYearProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext context = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var animals = context.Animals.ToList();
+
+            return View(animals);
         }
 
         public ActionResult About()

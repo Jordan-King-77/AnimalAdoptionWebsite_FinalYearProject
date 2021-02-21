@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +19,16 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DateOfBirth { get; set; }
+        public List<Animal> AnimalsOfInterest { get; set; }
+        public List<Animal> AnimalsForAdoption { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -24,6 +37,8 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public virtual DbSet<Animal> Animals { get; set; }
 
         public static ApplicationDbContext Create()
         {

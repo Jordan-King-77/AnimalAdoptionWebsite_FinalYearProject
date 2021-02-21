@@ -173,7 +173,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102211639284_Added-Animals-To-Database.cs" />
+    <Compile Include="Migrations\202102211639284_Added-Animals-To-Database.Designer.cs">
+      <DependentUpon>202102211639284_Added-Animals-To-Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211732158_Added-Extra-Fields-To-ApplicationUser.cs" />
+    <Compile Include="Migrations\202102211732158_Added-Extra-Fields-To-ApplicationUser.Designer.cs">
+      <DependentUpon>202102211732158_Added-Extra-Fields-To-ApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211824558_Added-Type-To-Animal.cs" />
+    <Compile Include="Migrations\202102211824558_Added-Type-To-Animal.Designer.cs">
+      <DependentUpon>202102211824558_Added-Type-To-Animal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211849465_Added-UserId-To-Animal.cs" />
+    <Compile Include="Migrations\202102211849465_Added-UserId-To-Animal.Designer.cs">
+      <DependentUpon>202102211849465_Added-UserId-To-Animal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211932557_DatabaseGeneratedOption.None-For-AnimalId.cs" />
+    <Compile Include="Migrations\202102211932557_DatabaseGeneratedOption.None-For-AnimalId.Designer.cs">
+      <DependentUpon>202102211932557_DatabaseGeneratedOption.None-For-AnimalId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211944446_Changed-Animal-UserId-From-Int-To-String.cs" />
+    <Compile Include="Migrations\202102211944446_Changed-Animal-UserId-From-Int-To-String.Designer.cs">
+      <DependentUpon>202102211944446_Changed-Animal-UserId-From-Int-To-String.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,6 +277,26 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202102211639284_Added-Animals-To-Database.resx">
+      <DependentUpon>202102211639284_Added-Animals-To-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211732158_Added-Extra-Fields-To-ApplicationUser.resx">
+      <DependentUpon>202102211732158_Added-Extra-Fields-To-ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211824558_Added-Type-To-Animal.resx">
+      <DependentUpon>202102211824558_Added-Type-To-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211849465_Added-UserId-To-Animal.resx">
+      <DependentUpon>202102211849465_Added-UserId-To-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211932557_DatabaseGeneratedOption.None-For-AnimalId.resx">
+      <DependentUpon>202102211932557_DatabaseGeneratedOption.None-For-AnimalId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211944446_Changed-Animal-UserId-From-Int-To-String.resx">
+      <DependentUpon>202102211944446_Changed-Animal-UserId-From-Int-To-String.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

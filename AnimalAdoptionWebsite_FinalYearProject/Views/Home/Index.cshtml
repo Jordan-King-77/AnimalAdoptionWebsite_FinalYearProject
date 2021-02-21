@@ -1,5 +1,44 @@
-﻿@{
+﻿@model IEnumerable<AnimalAdoptionWebsite_FinalYearProject.Models.Animal>
+
+@{
     ViewBag.Title = "Home Page";
+}
+
+@foreach (var animal in Model)
+{
+    <div>
+        <h3>@animal.Id</h3>
+        <h3>@animal.Name</h3>
+        <h4>@animal.Type</h4>
+        <h4>@animal.DateOfBirth</h4>
+
+        <div>
+            <h4>@(animal.Name)'s Description</h4>
+            <div>@animal.Description</div>
+            <div>@animal.Behaviour</div>
+            <div>@animal.BackgroundInfo</div>
+        </div>
+
+        <div>
+            <h4>@(animal.Name)'s Needs</h4>
+            <div>@animal.HouseholdRequirements</div>
+            <div>@animal.MedicalHistory</div>
+            <div>//Dietary needs</div>
+        </div>
+
+        @*<div>
+            @animal.Tags.Count
+        </div>*@
+
+        @*<div>
+            <h4>Tags</h4>
+            @foreach (var t in animal.Tags)
+            {
+                <p>@t</p>
+            }
+        </div>*@
+
+    </div>
 }
 
 <div class="jumbotron">
@@ -29,3 +68,4 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
