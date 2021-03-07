@@ -15,6 +15,8 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
 
         public string ApplicationUserId { get; set; }
 
+        public virtual ApplicationUser Rehomer { get; set; }
+
         [StringLength(20)]
         public string Name { get; set; }
 
@@ -29,6 +31,9 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string MedicalHistory { get; set; }
 
         [StringLength(200)]
+        public string DietaryNeeds { get; set; }
+
+        [StringLength(200)]
         public string Behaviour { get; set; }
 
         [StringLength(200)]
@@ -41,6 +46,10 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string CompatibleWithChildren { get; set; }
 
         public string Image { get; set; }
-        public List<string> Tags { get; set; }
+        public string Tag1 { get; set; }
+        public string Tag2 { get; set; }
+        public string Tag3 { get; set; }
+        public string Tag4 { get; set; }
+        public string Tag5 { get; set; }
     }
 }

@@ -27,8 +27,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateOfBirth { get; set; }
-        public List<Animal> AnimalsOfInterest { get; set; }
-        public List<Animal> AnimalsForAdoption { get; set; }
+        public virtual List<Animal> AnimalsOfInterest { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

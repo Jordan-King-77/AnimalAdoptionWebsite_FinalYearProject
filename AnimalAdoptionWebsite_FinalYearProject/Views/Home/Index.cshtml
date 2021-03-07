@@ -10,7 +10,8 @@
         <h3>@animal.Id</h3>
         <h3>@animal.Name</h3>
         <h4>@animal.Type</h4>
-        <h4>@animal.DateOfBirth</h4>
+        <h4>Date of Birth: @animal.DateOfBirth</h4>
+        <h4>Previous Owner: @animal.Rehomer.Email</h4>
 
         <div>
             <h4>@(animal.Name)'s Description</h4>
@@ -23,7 +24,16 @@
             <h4>@(animal.Name)'s Needs</h4>
             <div>@animal.HouseholdRequirements</div>
             <div>@animal.MedicalHistory</div>
-            <div>//Dietary needs</div>
+            <div>@animal.DietaryNeeds</div>
+        </div>
+
+        <div>
+            <h4>@(animal.Name)'s Tags</h4>
+            <div>@animal.Tag1</div>
+            <div>@animal.Tag2</div>
+            <div>@animal.Tag3</div>
+            <div>@animal.Tag4</div>
+            <div>@animal.Tag5</div>
         </div>
 
         @*<div>

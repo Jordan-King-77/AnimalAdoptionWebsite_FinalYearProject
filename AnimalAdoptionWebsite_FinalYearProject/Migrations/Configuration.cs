@@ -77,30 +77,33 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                 userManager.AddToRole(user.Id, "User");
             }
 
-
-            //Create an animal to populate the database
-            List<string> RexTags = new List<string>
+            if(!context.Users.Any(u => u.UserName == "DavidFoster@gmail.com"))
             {
-                "Happy",
-                "Playful",
-                "Energetic",
-                "Affectionate",
-                "Loving"
-            };
+                var user = new ApplicationUser
+                {
+                    UserName = "DavidFoster@gmail.com",
+                    Email = "DavidFoster@gmail.com",
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    FirstName = "David",
+                    LastName = "Foster",
+                    Gender = "Male",
+                    Address = "Stoke-On-Trent",
+                    PhoneNumber = "0145824438",
+                    DateOfBirth = new DateTime(1988, 4, 11)
+                };
 
-            List<string> OliverTags = new List<string>
-            {
-                "Calm",
-                "Hesitant",
-                "Nervous",
-                "Peaceful",
-                "Relaxing"
-            };
+                userManager.Create(user, "Foster1!");
+                userManager.AddToRole(user.Id, "User");
+            }
 
+            //Create animals to populate the database
             if(!context.Animals.Any(a => a.Name == "Rex"))
             {
+                ApplicationUser user = userManager.FindByEmail("DavidFoster@gmail.com");
+
                 var animal = new Animal
                 {
+                    Id = Guid.NewGuid(),
                     Name = "Rex",
                     Type = "Dog",
                     DateOfBirth = new DateTime(2020, 5, 11),
@@ -109,16 +112,24 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                     Behaviour = "Rex is very friendly, playful pup, who will happily cuddle with you on the sofa!",
                     BackgroundInfo = "Rex was left with us after his previous owner was unable to continue taking care of him.",
                     HouseholdRequirements = "Rex needs a lot of garden space to run around and exercise in.",
+                    DietaryNeeds = "Rex will be happy with a pure kibble diet, although he would also appreciate some meat, fish or rice for a special treat!",
                     CompatibleWithOtherAnimals = "Yes",
                     CompatibleWithChildren = "Yes",
-                    Tags = RexTags
+                    Tag1 = "Happy",
+                    Tag2 = "Playful",
+                    Tag3 = "Energetic",
+                    Tag4 = "Affectionate",
+                    Tag5 = "Loving",
+                    Rehomer = user
                 };
 
                 context.Animals.AddOrUpdate(animal);
             }
 
-            if (!context.Animals.Any(a => a.Name == "Cerberus"))
+            if (!context.Animals.Any(a => a.Name == "Oliver"))
             {
+                ApplicationUser user = userManager.FindByEmail("Steve@gmail.com");
+
                 var animal = new Animal
                 {
                     Id = Guid.NewGuid(),
@@ -130,9 +141,15 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                     Behaviour = "Oliver enjoys a calm atmosphere, and does not take well to excitable situations.",
                     BackgroundInfo = "We found Oliver as a stray cat, and has been with us ever since.",
                     HouseholdRequirements = "Oliver may need his own quiet corner of the house to go to occassionally.",
+                    DietaryNeeds = "Oliver needs to eat both tinned and dried food. Tinned for nourishment, and dried to clean his teeth.",
                     CompatibleWithOtherAnimals = "No",
                     CompatibleWithChildren = "No",
-                    Tags = OliverTags
+                    Tag1 = "Calm",
+                    Tag2 = "Hesitant",
+                    Tag3 = "Nervous",
+                    Tag4 = "Peaceful",
+                    Tag5 = "Relaxing",
+                    Rehomer = user
                 };
 
                 context.Animals.AddOrUpdate(animal);
