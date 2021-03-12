@@ -64,6 +64,29 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "The first name is required")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "The last name is required")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "The Gender is required")]
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+
+        [Required(ErrorMessage = "The address is required")]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "The date of birth is required")]
+        [Display(Name = "Date Of Birth")]
+        public string DateOfBirth { get; set; }
+
+        [Display(Name = "Select Role")]
+        public string SelectedRole { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -106,6 +106,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                     Id = Guid.NewGuid(),
                     Name = "Rex",
                     Type = "Dog",
+                    Gender = "Male",
                     DateOfBirth = new DateTime(2020, 5, 11),
                     Description = "Rex is a friendly dog who likes playing and cuddles.",
                     MedicalHistory = "Rex is a very healthy dog, with no known health issues.",
@@ -135,6 +136,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                     Id = Guid.NewGuid(),
                     Name = "Oliver",
                     Type = "Cat",
+                    Gender = "Male",
                     DateOfBirth = new DateTime(2020, 5, 11),
                     Description = "Oliver is a calm cat who enjoys relaxing.",
                     MedicalHistory = "Oliver has notable hearing difficulties.",
@@ -148,8 +150,8 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Migrations
                     Tag2 = "Hesitant",
                     Tag3 = "Nervous",
                     Tag4 = "Peaceful",
-                    Tag5 = "Relaxing",
-                    Rehomer = user
+                    Tag5 = "Relaxing"//,
+                    //Rehomer = user
                 };
 
                 context.Animals.AddOrUpdate(animal);

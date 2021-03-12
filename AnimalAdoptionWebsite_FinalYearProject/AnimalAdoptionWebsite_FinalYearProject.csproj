@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,6 +205,10 @@
     <Compile Include="Migrations\202103071547452_Added-DietaryNeeds-to-Animal.cs" />
     <Compile Include="Migrations\202103071547452_Added-DietaryNeeds-to-Animal.Designer.cs">
       <DependentUpon>202103071547452_Added-DietaryNeeds-to-Animal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103081214255_Added-Gender-to-Animal.cs" />
+    <Compile Include="Migrations\202103081214255_Added-Gender-to-Animal.Designer.cs">
+      <DependentUpon>202103081214255_Added-Gender-to-Animal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -269,6 +274,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Animal\CreateAnimal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103071547452_Added-DietaryNeeds-to-Animal.resx">
       <DependentUpon>202103071547452_Added-DietaryNeeds-to-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081214255_Added-Gender-to-Animal.resx">
+      <DependentUpon>202103081214255_Added-Gender-to-Animal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -83,4 +83,37 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class AnimalViewModel : IValidatableObject
+    {
+        [Display(Name = "Id")]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "The Animal Name is required")]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "The Animal Type is required")]
+        [Display(Name = "Type (Dog, Cat, etc)")]
+        public string Type { get; set; }
+
+        [Display(Name = "Previous Owner Email (If applicable)")]
+        public string RehomerEmail { get; set; }
+
+        [Required(ErrorMessage = "The Date of Birth is required")]
+        [Display(Name = "Date of Birth")]
+        public string DateOfBirthString { get; set; }
+
+        [Required(ErrorMessage = "The Description is required")]
+        [StringLength(200)]
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

@@ -20,6 +20,8 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         [StringLength(20)]
         public string Name { get; set; }
 
+        public string Gender { get; set; }
+
         [StringLength(20)]
         public string Type { get; set; }
         public DateTime DateOfBirth { get; set; }

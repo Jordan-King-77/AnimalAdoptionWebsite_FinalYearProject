@@ -17,9 +17,11 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public AccountController()
         {
+            ViewBag.Roles = new SelectList(context.Roles, "Name", "Name");
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,10 +153,29 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                DateTime dateOfBirth;
+                if(!DateTime.TryParse(model.DateOfBirth, out dateOfBirth))
+                {
+                    return View(model);
+                }
+
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Gender = model.Gender,
+                    Address = model.Address,
+                    DateOfBirth = dateOfBirth
+                };
+
+                //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, model.SelectedRole);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

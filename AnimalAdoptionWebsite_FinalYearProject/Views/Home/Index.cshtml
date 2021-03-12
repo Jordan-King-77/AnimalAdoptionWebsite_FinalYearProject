@@ -4,14 +4,23 @@
     ViewBag.Title = "Home Page";
 }
 
+<hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
 @foreach (var animal in Model)
 {
     <div>
         <h3>@animal.Id</h3>
         <h3>@animal.Name</h3>
         <h4>@animal.Type</h4>
+        <h4>@animal.Gender</h4>
         <h4>Date of Birth: @animal.DateOfBirth</h4>
-        <h4>Previous Owner: @animal.Rehomer.Email</h4>
+        @if (animal.Rehomer != null)
+        {
+            <h4>Previous Owner: @animal.Rehomer.Email</h4>
+        }
+        else
+        {
+            <h4>Previous Owner: Unknown</h4>
+        }
 
         <div>
             <h4>@(animal.Name)'s Description</h4>
@@ -35,23 +44,11 @@
             <div>@animal.Tag4</div>
             <div>@animal.Tag5</div>
         </div>
-
-        @*<div>
-            @animal.Tags.Count
-        </div>*@
-
-        @*<div>
-            <h4>Tags</h4>
-            @foreach (var t in animal.Tags)
-            {
-                <p>@t</p>
-            }
-        </div>*@
-
     </div>
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
@@ -77,5 +74,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
-
+</div>*@
