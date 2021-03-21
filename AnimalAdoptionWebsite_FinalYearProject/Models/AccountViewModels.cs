@@ -62,7 +62,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel : IValidatableObject
     {
         [Required(ErrorMessage = "The first name is required")]
         [Display(Name = "First Name")]
@@ -93,6 +93,11 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string Email { get; set; }
 
         [Required]
+        [EmailAddress]
+        [Display(Name = "Email Confirmation")]
+        public string RepeatEmail { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -102,6 +107,14 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if(Email.ToString() != RepeatEmail.ToString())
+            {
+                yield return new ValidationResult("The emails do not match");
+            }
+        }
     }
 
     public class ResetPasswordViewModel
