@@ -41,6 +41,25 @@ li a:hover:not(.active) {
     padding: 10px;
 }
 
+.formContainer {
+    background-color: sandybrown;
+    color: black;
+    padding: 10px;
+}
+
+.formContainerSecondLayer {
+    background-color: rosybrown;
+    color: black;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.buttonContainer {
+    text-align:center;
+    padding: 10px;
+    margin: 15px;
+}
+
 .myActionLink a {
     color: deepskyblue;
 }

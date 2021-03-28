@@ -44,6 +44,10 @@
             <div>@animal.Tag4</div>
             <div>@animal.Tag5</div>
         </div>
+
+        <div>
+            @Html.ActionLink("More Details", "FindAnimal", "Animal", new { id = animal.Id }, null)
+        </div>
     </div>
     <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
 namespace AnimalAdoptionWebsite_FinalYearProject.Models
@@ -84,7 +86,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 
-    public class AnimalViewModel
+    public class AnimalViewModel : IValidatableObject
     {
         [Display(Name = "Id")]
         public int Id { get; set; }
@@ -103,34 +105,38 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
 
         [Display(Name = "Previous Owner Email (If applicable)")]
         public string RehomerEmail { get; set; }
+        public ApplicationUser Rehomer { get; set; } = null;
 
         [Required(ErrorMessage = "The Date of Birth is required")]
         [Display(Name = "Date of Birth")]
         public string DateOfBirthString { get; set; }
 
+        [Required(ErrorMessage = "The date of birth could not be parsed. Please try another format")]
+        public DateTime DateOfBirthDT { get; set; }
+
         [Required(ErrorMessage = "Please give a brief description of your animal")]
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Medical History")]
         public string MedicalHistory { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Dietary Needs")]
         public string DietaryNeeds { get; set; }
 
         [Required(ErrorMessage = "Please provide honest details on the behaviour of your animal")]
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Behaviour")]
         public string Behaviour { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Background Information")]
         public string BackgroundInfo { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         [Display(Name = "Household Requirements")]
         public string HouseholdRequirements { get; set; }
 
@@ -151,28 +157,97 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         [Display(Name = "Tag 5")]
         public string Tag5 { get; set; }
 
-        public AnimalViewModel(AnimalViewModel model)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
+            //IRepository<Animal> animalRP = new AnimalRepository();
 
-            if (model.MedicalHistory == null)
+            //var userManager = animalRP.CreateUserStore();
+
+            //if (RehomerEmail != null)
+            //{
+            //    var user = userManager.FindByEmail(RehomerEmail);
+
+            //    if (user != null)
+            //    {
+            //        Rehomer = user;
+            //    }
+            //}
+
+            if (MedicalHistory == null)
             {
-                model.MedicalHistory = "The medical history of " + model.Name + " is currently unknown";
+                MedicalHistory = "The medical history of " + Name + " is currently unknown";
             }
 
-            if (model.DietaryNeeds == null)
+            if (DietaryNeeds == null)
             {
-                model.DietaryNeeds = model.Name + " has no specified dietary needs";
+                DietaryNeeds = Name + " has no specified dietary needs";
             }
 
-            if (model.BackgroundInfo == null)
+            if (BackgroundInfo == null)
             {
-                model.BackgroundInfo = "We have no information on the background of " + model.Name;
+                BackgroundInfo = "We have no information on the background of " + Name;
             }
 
-            if (model.HouseholdRequirements == null)
+            if (HouseholdRequirements == null)
             {
-                model.HouseholdRequirements = "We were not provided information on the household requirements of " + model.Name;
+                HouseholdRequirements = "We were not provided information on the household requirements of " + Name;
+            }
+
+            DateTime d;
+            if (!DateTime.TryParse(DateOfBirthString, out d))
+            {
+                yield return new ValidationResult("Date format could not be parsed");
+            }
+            else
+            {
+                DateOfBirthDT = d;
+            }
+
+
+            if (Tag1 == Tag2 || Tag1 == Tag3 || Tag1 == Tag4 || Tag1 == Tag5)
+            {
+                yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
+            }
+
+            if (Tag2 == Tag1 || Tag2 == Tag3 || Tag2 == Tag4 || Tag2 == Tag5)
+            {
+                yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
+            }
+
+            if (Tag3 != null)
+            {
+                if (Tag3 == Tag1 || Tag3 == Tag2 || Tag3 == Tag4 || Tag3 == Tag5)
+                {
+                    yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
+                }
+            }
+
+            if (Tag4 != null)
+            {
+                if (Tag4 == Tag1 || Tag4 == Tag2 || Tag4 == Tag3 || Tag4 == Tag5)
+                {
+                    yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
+                }
+            }
+
+            if (Tag5 != null)
+            {
+                if (Tag5 == Tag1 || Tag5 == Tag2 || Tag5 == Tag3 || Tag5 == Tag4)
+                {
+                    yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
+                }
+            }
+
+            //animalRP.Dispose();
+        }
+
+        public class SearchViewModel : IValidatableObject
+        {
+
+
+            public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+            {
+                throw new NotImplementedException();
             }
         }
     }

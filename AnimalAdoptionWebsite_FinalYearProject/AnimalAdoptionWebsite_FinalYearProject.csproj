@@ -210,10 +210,16 @@
     <Compile Include="Migrations\202103081214255_Added-Gender-to-Animal.Designer.cs">
       <DependentUpon>202103081214255_Added-Gender-to-Animal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103281613556_Changed-Animal-Stringlengths-from-200-to-500.cs" />
+    <Compile Include="Migrations\202103281613556_Changed-Animal-Stringlengths-from-200-to-500.Designer.cs">
+      <DependentUpon>202103281613556_Changed-Animal-Stringlengths-from-200-to-500.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animal.cs" />
+    <Compile Include="Models\AnimalRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -275,6 +281,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Animal\CreateAnimal.cshtml" />
+    <Content Include="Views\Animal\AnimalDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081214255_Added-Gender-to-Animal.resx">
       <DependentUpon>202103081214255_Added-Gender-to-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281613556_Changed-Animal-Stringlengths-from-200-to-500.resx">
+      <DependentUpon>202103281613556_Changed-Animal-Stringlengths-from-200-to-500.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -26,22 +26,22 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string Type { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string Description { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string MedicalHistory { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string DietaryNeeds { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string Behaviour { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string BackgroundInfo { get; set; }
 
-        [StringLength(200)]
+        [StringLength(500)]
         public string HouseholdRequirements { get; set; }
 
         public string CompatibleWithOtherAnimals { get; set; }

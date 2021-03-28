@@ -1,0 +1,46 @@
+﻿@model AnimalAdoptionWebsite_FinalYearProject.Models.Animal
+
+@{
+    ViewBag.Title = Model.Name + "'s Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="AnimalDetails">
+    <h3>@Model.Id</h3>
+    <h3>@Model.Name</h3>
+    <h4>@Model.Type</h4>
+    <h4>@Model.Gender</h4>
+    <h4>Date of Birth: @Model.DateOfBirth</h4>
+    @if (Model.Rehomer != null)
+    {
+        <h4>Previous Owner: @Model.Rehomer.Email</h4>
+    }
+    else
+    {
+        <h4>Previous Owner: Unknown</h4>
+    }
+
+    <div>
+        <h4>@(Model.Name)'s Description</h4>
+        <div>@Model.Description</div>
+        <div>@Model.Behaviour</div>
+        <div>@Model.BackgroundInfo</div>
+    </div>
+
+    <div>
+        <h4>@(Model.Name)'s Needs</h4>
+        <div>@Model.HouseholdRequirements</div>
+        <div>@Model.MedicalHistory</div>
+        <div>@Model.DietaryNeeds</div>
+    </div>
+
+    <div>
+        <h4>@(Model.Name)'s Tags</h4>
+        <div>@Model.Tag1</div>
+        <div>@Model.Tag2</div>
+        <div>@Model.Tag3</div>
+        <div>@Model.Tag4</div>
+        <div>@Model.Tag5</div>
+    </div>
+</div>
