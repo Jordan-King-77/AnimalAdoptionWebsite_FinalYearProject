@@ -93,6 +93,23 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             return View("AnimalDisplay", animal);
         }
 
-        //TODO: Implement Search Function
+        [AllowAnonymous]
+        public ViewResult SearchAnimal()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult SearchAnimalResults(SearchViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var animals = animalRP.Search(model);
+
+                return View(animals);
+            }
+
+            return View("SearchAnimal", model);
+        }
     }
 }

@@ -15,6 +15,6 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         void Update(T entity);
         UserManager<ApplicationUser> CreateUserStore();
         T FindGuid(Guid? id);
-        IEnumerable<T> Search(SearchViewModel m);
+        IEnumerable<T> Search(SearchViewModel search);
     }
 }

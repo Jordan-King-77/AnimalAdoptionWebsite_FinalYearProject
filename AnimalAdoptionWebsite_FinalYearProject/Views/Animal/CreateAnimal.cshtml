@@ -9,7 +9,7 @@
 @using (Html.BeginForm("CreateAnimal", "Animal", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(false)
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
 <div class="formContainer">
     <div class="formContainerSecondLayer">
@@ -51,11 +51,13 @@
     <div class="formContainerSecondLayer">
         @Html.LabelFor(model => model.DateOfBirthString)
         @Html.TextBoxFor(m => m.DateOfBirthString)
+        @Html.ValidationMessageFor(model => model.DateOfBirthString, "", new { @class = "text-danger" })
     </div>
 
     <div class="formContainerSecondLayer">
         @Html.LabelFor(model => model.Description)
         @Html.TextAreaFor(m => m.Description)
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
     </div>
 
     <div class="formContainerSecondLayer">
@@ -71,6 +73,7 @@
     <div class="formContainerSecondLayer">
         @Html.LabelFor(model => model.Behaviour)
         @Html.TextAreaFor(m => m.Behaviour)
+        @Html.ValidationMessageFor(model => model.Behaviour, "", new { @class = "text-danger" })
     </div>
 
     <div class="formContainerSecondLayer">

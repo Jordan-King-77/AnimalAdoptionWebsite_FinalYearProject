@@ -41,6 +41,23 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
             return context.Animals.Find(id);
         }
 
+        public IEnumerable<Animal> Search(SearchViewModel search)
+        {
+            var model =
+                from m in context.Animals
+                orderby m.Name ascending
+                where (search.Name == null || m.Name.StartsWith(search.Name))
+                where (search.Gender == null || m.Gender.StartsWith(search.Gender))
+                where (search.Type == null || m.Type.StartsWith(search.Type))
+                where (search.CompatibleWithOtherAnimals == null || m.CompatibleWithOtherAnimals.StartsWith(search.CompatibleWithOtherAnimals))
+                where (search.CompatibleWithChildren == null || m.CompatibleWithChildren.StartsWith(search.CompatibleWithChildren))
+                where (search.Tag == null || m.Tag1.StartsWith(search.Tag))
+                where (search.DateOfBirthStartDT == null && search.DateOfBirthEndDT == null || m.DateOfBirth > search.DateOfBirthStartDT && m.DateOfBirth < search.DateOfBirthEndDT)
+                select m;
+
+            return model;
+        }
+
         public List<Animal> ToList()
         {
             return context.Animals.ToList();

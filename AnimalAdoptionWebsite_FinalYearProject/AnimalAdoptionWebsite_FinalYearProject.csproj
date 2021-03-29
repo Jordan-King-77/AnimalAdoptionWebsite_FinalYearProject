@@ -282,6 +282,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Animal\CreateAnimal.cshtml" />
     <Content Include="Views\Animal\AnimalDisplay.cshtml" />
+    <Content Include="Views\Animal\SearchAnimal.cshtml" />
+    <Content Include="Views\Animal\SearchAnimalResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

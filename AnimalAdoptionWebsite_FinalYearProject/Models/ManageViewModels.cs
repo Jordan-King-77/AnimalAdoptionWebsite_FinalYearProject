@@ -159,20 +159,6 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            //IRepository<Animal> animalRP = new AnimalRepository();
-
-            //var userManager = animalRP.CreateUserStore();
-
-            //if (RehomerEmail != null)
-            //{
-            //    var user = userManager.FindByEmail(RehomerEmail);
-
-            //    if (user != null)
-            //    {
-            //        Rehomer = user;
-            //    }
-            //}
-
             if (MedicalHistory == null)
             {
                 MedicalHistory = "The medical history of " + Name + " is currently unknown";
@@ -237,17 +223,70 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
                     yield return new ValidationResult("Two or more of the tags you have chosen are the same, please choose 5 different tags");
                 }
             }
-
-            //animalRP.Dispose();
         }
+    }
 
-        public class SearchViewModel : IValidatableObject
+    public class SearchViewModel : IValidatableObject
+    {
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+
+        [Display(Name = "Type")]
+        public string Type { get; set; }
+
+        [Display(Name = "Date of birth start date")]
+        public string DateOfBirthStartString { get; set; }
+        public DateTime? DateOfBirthStartDT { get; set; }
+
+        [Display(Name = "Date of birth end date")]
+        public string DateOfBirthEndString { get; set; }
+        public DateTime? DateOfBirthEndDT { get; set; }
+
+        [Display(Name = "Compatible with other animals")]
+        public string CompatibleWithOtherAnimals { get; set; }
+
+        [Display(Name = "Compatible with children")]
+        public string CompatibleWithChildren { get; set; }
+
+        [Display(Name = "Search by Tag")]
+        public string Tag { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-
-
-            public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+            if (DateOfBirthStartString != null)
             {
-                throw new NotImplementedException();
+                if (!DateTime.TryParse(DateOfBirthStartString, out DateTime tempStartString))
+                {
+                    yield return new ValidationResult("Start date format could not be parsed");
+                }
+                else
+                {
+                    DateOfBirthStartDT = tempStartString;
+                }
+            }
+
+            if (DateOfBirthEndString != null)
+            {
+                if (!DateTime.TryParse(DateOfBirthEndString, out DateTime tempEndString))
+                {
+                    yield return new ValidationResult("End date format could not be parsed");
+                }
+                else
+                {
+                    DateOfBirthEndDT = tempEndString;
+                }
+            }
+
+            if (DateOfBirthStartDT != null && DateOfBirthEndDT == null)
+            {
+                yield return new ValidationResult("Please enter an end date");
+            }
+            if (DateOfBirthEndDT != null && DateOfBirthStartDT == null)
+            {
+                yield return new ValidationResult("Please enter a start date");
             }
         }
     }

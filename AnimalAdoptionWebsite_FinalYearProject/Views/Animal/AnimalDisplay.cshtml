@@ -7,7 +7,6 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="AnimalDetails">
-    <h3>@Model.Id</h3>
     <h3>@Model.Name</h3>
     <h4>@Model.Type</h4>
     <h4>@Model.Gender</h4>
@@ -21,6 +20,8 @@
         <h4>Previous Owner: Unknown</h4>
     }
 
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
     <div>
         <h4>@(Model.Name)'s Description</h4>
         <div>@Model.Description</div>
@@ -28,12 +29,16 @@
         <div>@Model.BackgroundInfo</div>
     </div>
 
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
     <div>
         <h4>@(Model.Name)'s Needs</h4>
         <div>@Model.HouseholdRequirements</div>
         <div>@Model.MedicalHistory</div>
         <div>@Model.DietaryNeeds</div>
     </div>
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
 
     <div>
         <h4>@(Model.Name)'s Tags</h4>

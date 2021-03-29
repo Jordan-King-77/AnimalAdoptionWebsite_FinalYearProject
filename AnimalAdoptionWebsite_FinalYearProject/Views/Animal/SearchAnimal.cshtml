@@ -1,0 +1,100 @@
+﻿@model AnimalAdoptionWebsite_FinalYearProject.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Search Animals";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("SearchAnimalResults", "Animal", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<div class="formContainer">
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.Type)
+        @Html.DropDownListFor(m => m.Type, new List<SelectListItem>
+            {
+                new SelectListItem{ },
+                new SelectListItem { Text = "Dog", Value = "Dog"},
+                new SelectListItem { Text = "Cat", Value = "Cat"},
+                new SelectListItem { Text = "Hamster", Value = "Hamster"},
+                new SelectListItem { Text = "Reptile", Value = "Reptile"},
+                new SelectListItem { Text = "Other", Value = "Other"}
+            })
+        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.Gender)
+        @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+            {
+                new SelectListItem{ },
+                new SelectListItem { Text = "Male", Value = "Male"},
+                new SelectListItem { Text = "Female", Value = "Female"},
+                new SelectListItem { Text = "Other", Value = "Other"}
+            })
+        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.DateOfBirthStartString)
+        @Html.TextBoxFor(m => m.DateOfBirthStartString)
+
+        @Html.LabelFor(model => model.DateOfBirthEndString)
+        @Html.TextBoxFor(m => m.DateOfBirthEndString)
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.CompatibleWithOtherAnimals)
+        @Html.DropDownListFor(m => m.CompatibleWithOtherAnimals, new List<SelectListItem>
+            {
+                new SelectListItem{ },
+                new SelectListItem { Text = "Yes", Value = "Yes"},
+                new SelectListItem { Text = "No", Value = "No"}
+            })
+        @Html.ValidationMessageFor(model => model.CompatibleWithOtherAnimals, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.CompatibleWithChildren)
+        @Html.DropDownListFor(m => m.CompatibleWithChildren, new List<SelectListItem>
+            {
+                new SelectListItem{ },
+                new SelectListItem { Text = "Yes", Value = "Yes"},
+                new SelectListItem { Text = "No", Value = "No"}
+            })
+        @Html.ValidationMessageFor(model => model.CompatibleWithChildren, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="formContainerSecondLayer">
+        @Html.LabelFor(model => model.Tag)
+        @Html.DropDownListFor(m => m.Tag, new List<SelectListItem>
+            {
+                new SelectListItem{ },
+                new SelectListItem { Text = "Happy", Value = "Happy"},
+                new SelectListItem { Text = "Playful", Value = "Playful"},
+                new SelectListItem { Text = "Energetic", Value = "Energetic"},
+                new SelectListItem { Text = "Affectionate", Value = "Affectionate"},
+                new SelectListItem { Text = "Loving", Value = "Loving"},
+                new SelectListItem { Text = "Calm", Value = "Calm"},
+                new SelectListItem { Text = "Hesitant", Value = "Hesitant"},
+                new SelectListItem { Text = "Nervous", Value = "Nervous"},
+                new SelectListItem { Text = "Peaceful", Value = "Peaceful"},
+                new SelectListItem { Text = "Relaxing", Value = "Relaxing"}
+            })
+        @Html.ValidationMessageFor(model => model.Tag, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="buttonContainer">
+        <input type="submit" value="Search" class="btn btn-default" />
+    </div>
+</div>
+}
