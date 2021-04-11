@@ -1,0 +1,20 @@
+﻿@model AnimalAdoptionWebsite_FinalYearProject.Models.UploadImageToAnimalViewModel
+@{
+    ViewBag.Title = "Upload Image";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="formContainer">
+        <div class="formContainerSecondLayer">
+            <label>Select image to upload</label>
+            <input type="hidden" name="Id" value="@ViewBag.Id" />
+            <input type="file" name="Image" required/>
+        </div>
+
+        <div class="buttonContainer">
+            <input type="submit" value="Upload" class="btn btn-default" />
+        </div>
+    </div>
+</form>

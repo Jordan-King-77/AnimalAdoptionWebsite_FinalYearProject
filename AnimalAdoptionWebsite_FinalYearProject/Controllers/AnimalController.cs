@@ -1,5 +1,6 @@
 ﻿using AnimalAdoptionWebsite_FinalYearProject.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,6 +111,50 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             }
 
             return View("SearchAnimal", model);
+        }
+
+        [AllowAnonymous]
+        public ViewResult UploadImageToAnimal(Guid? Id)
+        {
+            ViewBag.Id = Id;
+
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult UploadImageToAnimal(Guid? Id, HttpPostedFileBase Image/*UploadImageToAnimalViewModel model*//*Guid? Id, IFormFile Image*/)
+        {
+            try
+            {
+                if (Id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var animal = animalRP.FindGuid(Id);
+
+                if (animal == null)
+                {
+                    return HttpNotFound();
+                }
+
+                string strDateTime = DateTime.Now.ToString("ddMMyyyyHHMMss");
+                string finalPath = "\\Images\\" + strDateTime + Image.FileName;
+
+                Image.SaveAs(Server.MapPath("~") + finalPath);
+
+                animal.Image = finalPath;
+                animalRP.Update(animal);
+
+                return View("AnimalDisplay", animal);
+            }
+
+            catch(Exception ex)
+            {
+                ViewBag.Exception = ex.Message.ToString();
+                return View("Index");
+            }
         }
     }
 }

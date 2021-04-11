@@ -8,6 +8,8 @@
 @foreach (var animal in Model.ToList())
 {
     <div class="AnimalDetails">
+        <img src="@animal.Image" height="400" width="400" />
+
         <h2>@animal.Name</h2>
         <h3>@animal.Type</h3>
         <h3>@animal.Gender</h3>

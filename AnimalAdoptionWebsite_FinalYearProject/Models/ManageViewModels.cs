@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Owin.Security;
 
 namespace AnimalAdoptionWebsite_FinalYearProject.Models
@@ -224,6 +225,12 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
                 }
             }
         }
+    }
+
+    public class UploadImageToAnimalViewModel
+    {
+        public Guid Id { get; set; }
+        public IFormFile Image { get; set; }        
     }
 
     public class SearchViewModel : IValidatableObject
