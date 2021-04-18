@@ -87,7 +87,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult EditAnimal(Guid Id, AnimalViewModel model)
+        public ActionResult EditAnimal(Guid? Id, AnimalViewModel model)
         {
             if(Id == null)
             {
@@ -212,7 +212,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult ChangeAvailability(Guid Id)
+        public ActionResult ChangeAvailability(Guid? Id)
         {
             if(Id == null)
             {
@@ -235,7 +235,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public ActionResult RegisterInterest(Guid Id)
+        public ActionResult RegisterInterest(Guid? Id)
         {
             if(Id == null)
             {
