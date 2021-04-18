@@ -21,6 +21,7 @@
     {
         <h4>Previous Owner: Unknown</h4>
     }
+    <h4>Interested Users: @Model.InterestedUsers</h4>
 
     <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
 
@@ -56,13 +57,15 @@
         <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
 
         <div>
-            Register Interest
+            @Html.ActionLink("Register Interest", "RegisterInterest", new { Id = Model.Id })
         </div>
     }
 
     @if (User.IsInRole("Admin"))
     {
         <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+        @Html.ActionLink("Edit details", "EditAnimal", new { Id = Model.Id })
 
         if (Model.Image == null)
         {

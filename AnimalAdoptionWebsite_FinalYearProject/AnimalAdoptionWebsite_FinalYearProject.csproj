@@ -247,6 +247,10 @@
     <Compile Include="Migrations\202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.Designer.cs">
       <DependentUpon>202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104181349469_Added-InterestedUsers-to-Animal.cs" />
+    <Compile Include="Migrations\202104181349469_Added-InterestedUsers-to-Animal.Designer.cs">
+      <DependentUpon>202104181349469_Added-InterestedUsers-to-Animal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animal.cs" />
@@ -318,6 +322,7 @@
     <Content Include="Views\Animal\SearchAnimal.cshtml" />
     <Content Include="Views\Animal\SearchAnimalResults.cshtml" />
     <Content Include="Views\Animal\UploadImageToAnimal.cshtml" />
+    <Content Include="Views\Animal\EditAnimal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -372,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.resx">
       <DependentUpon>202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181349469_Added-InterestedUsers-to-Animal.resx">
+      <DependentUpon>202104181349469_Added-InterestedUsers-to-Animal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

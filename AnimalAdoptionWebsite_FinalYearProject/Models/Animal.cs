@@ -55,5 +55,6 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string Tag5 { get; set; }
 
         public bool IsUnavailable { get; set; }
+        public int InterestedUsers { get; set; }
     }
 }

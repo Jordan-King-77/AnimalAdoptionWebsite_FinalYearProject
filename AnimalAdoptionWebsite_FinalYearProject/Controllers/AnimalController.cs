@@ -76,6 +76,53 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditAnimal(Guid Id)
+        {
+            ViewBag.AnimalId = Id;
+
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditAnimal(Guid Id, AnimalViewModel model)
+        {
+            if(Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var animal = animalRP.FindGuid(Id);
+            if (animal == null)
+            {
+                return HttpNotFound();
+            }
+
+            if(model.Name != null) { animal.Name = model.Name; }            
+            if (model.Description != null) { animal.Description = model.Description; }
+            if (model.MedicalHistory != null) { animal.MedicalHistory = model.MedicalHistory; }
+            if (model.DietaryNeeds != null) { animal.DietaryNeeds = model.DietaryNeeds; }
+            if (model.Behaviour != null) { animal.Behaviour = model.Behaviour; }
+            if (model.BackgroundInfo != null) { animal.BackgroundInfo = model.BackgroundInfo; }
+            if (model.HouseholdRequirements != null) { animal.HouseholdRequirements = model.HouseholdRequirements; }            
+
+            animal.Type = model.Type;
+            animal.Gender = model.Gender;
+            animal.CompatibleWithChildren = model.CompatibleWithChildren;
+            animal.CompatibleWithOtherAnimals = model.CompatibleWithOtherAnimals;
+            animal.Tag1 = model.Tag1;
+            animal.Tag2 = model.Tag2;
+            animal.Tag3 = model.Tag3;
+            animal.Tag4 = model.Tag4;
+            animal.Tag5 = model.Tag5;
+
+            animalRP.Update(animal);                
+
+            return View("AnimalDisplay", animal);
+        }
+
         [AllowAnonymous]
         public ActionResult FindAnimal(Guid? id)
         {
@@ -175,6 +222,27 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             if (animal.IsUnavailable == false) { animal.IsUnavailable = true; }
             else if (animal.IsUnavailable == true) { animal.IsUnavailable = false; }
 
+            animalRP.Update(animal);
+
+            return View("AnimalDisplay", animal);
+        }
+
+        [Authorize(Roles = "User")]
+        public ActionResult RegisterInterest(Guid Id)
+        {
+            if(Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var animal = animalRP.FindGuid(Id);
+
+            if(animal == null)
+            {
+                return HttpNotFound();
+            }
+
+            animal.InterestedUsers++;
             animalRP.Update(animal);
 
             return View("AnimalDisplay", animal);
