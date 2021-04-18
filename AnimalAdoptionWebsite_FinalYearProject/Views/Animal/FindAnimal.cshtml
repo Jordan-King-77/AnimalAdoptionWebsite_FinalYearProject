@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Find Animal By Id";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("FindAnimal", "Animal", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="AnimalDetails">
+        <label>Enter the Id of the animal you want to find</label>
+        <div class="formContainerSecondLayer"><input type="text" name="id" /></div>
+        <div class="buttonContainer"><input type="submit" /></div>
+    </div>
+}

@@ -123,7 +123,14 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             return View("AnimalDisplay", animal);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
+        public ActionResult FindAnimal()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
         public ActionResult FindAnimal(Guid? id)
         {
             if(id == null)

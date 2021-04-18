@@ -4,78 +4,182 @@
     ViewBag.Title = "Home Page";
 }
 
-<hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
-@foreach (var animal in Model)
-{
-    <div class="AnimalDetails">
-        <h3>@animal.Id</h3>
-        <h3>@animal.Name</h3>
-        <h4>@animal.Type</h4>
-        <h4>@animal.Gender</h4>
-        <h4>Date of Birth: @animal.DateOfBirth</h4>
-        @if (animal.Rehomer != null)
-        {
-            <h4>Previous Owner: @animal.Rehomer.Email</h4>
-        }
-        else
-        {
-            <h4>Previous Owner: Unknown</h4>
-        }
+<div class="AnimalDetails" style="padding-bottom:50px;">
+    <h1 style="padding-bottom:10px;">Welcome to King's Animal Adoption Centre!</h1>
 
-        <div>
-            <h4>@(animal.Name)'s Description</h4>
-            <div>@animal.Description</div>
-            <div>@animal.Behaviour</div>
-            <div>@animal.BackgroundInfo</div>
-        </div>
-
-        <div>
-            <h4>@(animal.Name)'s Needs</h4>
-            <div>@animal.HouseholdRequirements</div>
-            <div>@animal.MedicalHistory</div>
-            <div>@animal.DietaryNeeds</div>
-        </div>
-
-        <div>
-            <h4>@(animal.Name)'s Tags</h4>
-            <div>@animal.Tag1</div>
-            <div>@animal.Tag2</div>
-            <div>@animal.Tag3</div>
-            <div>@animal.Tag4</div>
-            <div>@animal.Tag5</div>
-        </div>
-
-        <div>
-            @Html.ActionLink("More Details", "FindAnimal", "Animal", new { id = animal.Id }, null)
-        </div>
+    <div>
+        <img src="\ImagesForViews\HomePageWomanAndDog.jpg" height="300" width="430" style="padding-right:5px;
+    padding-bottom:10px;float:left;" />
     </div>
-    <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
-}
 
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div>
+        <span>
+            Here at King's Animal Adoption Centre, we strive to help as many animals as we can. All of us here are very passionate
+            about animals, and it breaks our heart to see them abandoned and alone. At King's, we don't care what you are, dog, cat,
+            hamster, lizard, everyone is welcome here, and everyone will be treated with the love and respect they deserve, no matter how
+            old, no matter how healthy, no matter how grumpy!
+        </span>
+    </div>
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+    <div>
+        <span>
+            Despite having a lot of passionate people working with us, we still can't save every animal by ourselves. That's why we
+            work closely with our community, and will take on any animal given to us, and give them a loving home. If you find a
+            stray on the street, or you find that for whatever reason you can't continue to care for your pet, you can rest assured
+            that if you leave them with us they will get all the due care, attention and love they deserve. We won't let you down!
+        </span>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="formContainerSecondLayer" style="padding-bottom:50px;">
+    <h2>Find your forever friend</h2>
+
+    <img src="\ImagesForViews\HomePageWomanAndCats.jpg" height="300" width="430" style="padding-left:5px;
+    padding-bottom:5px;float:right;" />
+
+    <div>
+        <span>
+            While we absolutely love having a facility chock full of animals all day, we understand that if you truly love something
+            you should let it go. That's why we love to have people come in and look at our animals, and maybe take them home, and
+            give them a fresh start, another go at finding a wonderful owner. It'll be hard for us, but we know it's for the best!
+        </span>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+    <div>
+        <span>
+            Why not take a look at our animals right now? We have lots of lovely friends all eager to meet you, and we'd be pleased
+            as punch to be your matchmaker! Click on the link below to be taken to our search page, where you can put in all kinds
+            of search criteria. Want a fluffy energetic dog? What about a laid back, cool headed cat? How about a big scaly lizard?
+            The choice is yours! If you aren't picky, click straight on the search button to see all the animals we have to offer!
+        </span>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+    <div>
+        <span>
+            Please be warned though, our admins are hard at work all day long on this website, so it may be that an animal you see
+            on one day may not be available the next. Be fast and register your interest if someone catches your eye!
+        </span>
     </div>
-</div>*@
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+    @Html.ActionLink("Click here to search for a new companion!", "SearchAnimal", "Animal")
+</div>
+
+<div class="AnimalDetails">
+    <h2>Rehome an animal</h2>
+
+    <img src="\ImagesForViews\HomePageDogPlayingWithRope.jpg" height="300" width="430" style="padding-right:5px;
+    padding-bottom:10px;float:left;" />
+
+    <div>
+        <span>
+            While we always hope that animals are forever friends, it would be unrealistic to pretend that is always the case. In
+            an ideal world, we wouldn't be needed, but sadly, animals are abandoned, and we're here to help. Our admins are hard at
+            work adding our newly found friends to our website, letting you see our entire roster of stalwart companions! You can
+            help as well! If you have an animal you would like us to care for, be it because you found a stray on the street, or you
+            can't care for your pet anymore, for whatever reason, you are absolutely welcome to fill in the necessary details for the
+            animal, and we would be happy to take them in.
+        </span>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+    <div>
+        <span>
+            Please be as truthful as you can when filling in the details. We know it may be a pain, but knowing more about the
+            animal will really help it when it comes down to finding a family to adopt it. You may not know everything about them,
+            and that's completely fine, but please fill in what you can to the best of your ability. Thank you very much!
+        </span>
+    </div>
+
+    <div>
+        <span>
+            Please be aware, to fill in these details, you must have an account with us.
+        </span>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+    @Html.ActionLink("Rehome an animal", "CreateAnimal", "Animal")
+</div>
+
+    @*<hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
+        @foreach (var animal in Model)
+        {
+            <div class="AnimalDetails">
+                <h3>@animal.Id</h3>
+                <h3>@animal.Name</h3>
+                <h4>@animal.Type</h4>
+                <h4>@animal.Gender</h4>
+                <h4>Date of Birth: @animal.DateOfBirth</h4>
+                @if (animal.Rehomer != null)
+                {
+                    <h4>Previous Owner: @animal.Rehomer.Email</h4>
+                }
+                else
+                {
+                    <h4>Previous Owner: Unknown</h4>
+                }
+
+                <div>
+                    <h4>@(animal.Name)'s Description</h4>
+                    <div>@animal.Description</div>
+                    <div>@animal.Behaviour</div>
+                    <div>@animal.BackgroundInfo</div>
+                </div>
+
+                <div>
+                    <h4>@(animal.Name)'s Needs</h4>
+                    <div>@animal.HouseholdRequirements</div>
+                    <div>@animal.MedicalHistory</div>
+                    <div>@animal.DietaryNeeds</div>
+                </div>
+
+                <div>
+                    <h4>@(animal.Name)'s Tags</h4>
+                    <div>@animal.Tag1</div>
+                    <div>@animal.Tag2</div>
+                    <div>@animal.Tag3</div>
+                    <div>@animal.Tag4</div>
+                    <div>@animal.Tag5</div>
+                </div>
+
+                <div>
+                    @Html.ActionLink("More Details", "FindAnimal", "Animal", new { id = animal.Id }, null)
+                </div>
+            </div>
+            <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
+        }*@
+
+    @*<div class="jumbotron">
+            <h1>ASP.NET</h1>
+            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+            <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                    enables a clean separation of concerns and gives you full control over markup
+                    for enjoyable, agile development.
+                </p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more libraries</h2>
+                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Web Hosting</h2>
+                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+            </div>
+        </div>*@
