@@ -7,27 +7,30 @@
 
 @foreach (var animal in Model.ToList())
 {
-    <div class="AnimalDetails">
-        <img src="@animal.Image" height="400" width="400" />
+    if (!animal.IsUnavailable)
+    {
+        <div class="AnimalDetails">
+            <img src="@animal.Image" height="400" width="400" />
 
-        <h2>@animal.Name</h2>
-        <h3>@animal.Type</h3>
-        <h3>@animal.Gender</h3>
+            <h2>@animal.Name</h2>
+            <h3>@animal.Type</h3>
+            <h3>@animal.Gender</h3>
 
-        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+            <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
 
-        <div>
-            <h4>@(animal.Name)'s Tags</h4>
-            <div>@animal.Tag1</div>
-            <div>@animal.Tag2</div>
-            <div>@animal.Tag3</div>
-            <div>@animal.Tag4</div>
-            <div>@animal.Tag5</div>
+            <div>
+                <h4>@(animal.Name)'s Tags</h4>
+                <div>@animal.Tag1</div>
+                <div>@animal.Tag2</div>
+                <div>@animal.Tag3</div>
+                <div>@animal.Tag4</div>
+                <div>@animal.Tag5</div>
+            </div>
+
+            <div>
+                @Html.ActionLink("More Details", "FindAnimal", "Animal", new { id = animal.Id }, null)
+            </div>
         </div>
-
-        <div>
-            @Html.ActionLink("More Details", "FindAnimal", "Animal", new { id = animal.Id }, null)
-        </div>
-    </div>
-    <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:grey" />
+    }
 }

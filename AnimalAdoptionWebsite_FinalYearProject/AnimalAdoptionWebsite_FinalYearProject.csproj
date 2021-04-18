@@ -239,6 +239,14 @@
     <Compile Include="Migrations\202103281613556_Changed-Animal-Stringlengths-from-200-to-500.Designer.cs">
       <DependentUpon>202103281613556_Changed-Animal-Stringlengths-from-200-to-500.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104181225101_Added-IsAvailable-bool-to-Animal.cs" />
+    <Compile Include="Migrations\202104181225101_Added-IsAvailable-bool-to-Animal.Designer.cs">
+      <DependentUpon>202104181225101_Added-IsAvailable-bool-to-Animal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.cs" />
+    <Compile Include="Migrations\202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.Designer.cs">
+      <DependentUpon>202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Animal.cs" />
@@ -358,6 +366,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103281613556_Changed-Animal-Stringlengths-from-200-to-500.resx">
       <DependentUpon>202103281613556_Changed-Animal-Stringlengths-from-200-to-500.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181225101_Added-IsAvailable-bool-to-Animal.resx">
+      <DependentUpon>202104181225101_Added-IsAvailable-bool-to-Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.resx">
+      <DependentUpon>202104181227397_Changed-IsAvailable-to-IsUnavailable-in-Animal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

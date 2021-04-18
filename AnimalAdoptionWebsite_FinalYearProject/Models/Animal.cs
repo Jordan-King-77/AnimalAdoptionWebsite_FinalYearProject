@@ -53,5 +53,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         public string Tag3 { get; set; }
         public string Tag4 { get; set; }
         public string Tag5 { get; set; }
+
+        public bool IsUnavailable { get; set; }
     }
 }

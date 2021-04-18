@@ -156,5 +156,28 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
                 return View("Index");
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ChangeAvailability(Guid Id)
+        {
+            if(Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var animal = animalRP.FindGuid(Id);
+
+            if(animal == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (animal.IsUnavailable == false) { animal.IsUnavailable = true; }
+            else if (animal.IsUnavailable == true) { animal.IsUnavailable = false; }
+
+            animalRP.Update(animal);
+
+            return View("AnimalDisplay", animal);
+        }
     }
 }

@@ -51,10 +51,37 @@
         <div>@Model.Tag5</div>
     </div>
 
-    @if (Model.Image == null)
+    @if (User.IsInRole("User"))
     {
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
         <div>
-            @Html.ActionLink("Upload image for animal", "UploadImageToAnimal", new { Id = Model.Id })
+            Register Interest
         </div>
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+        if (Model.Image == null)
+        {
+            <div>
+                @Html.ActionLink("Upload image for animal", "UploadImageToAnimal", new { Id = Model.Id })
+            </div>
+        }
+
+        if (!Model.IsUnavailable)
+        {
+            <div>
+                @Html.ActionLink("Make this animal unavailable to view", "ChangeAvailability", new { Id = Model.Id })
+            </div>
+        }
+        else
+        {
+            <div>
+                @Html.ActionLink("Make this animal available to view", "ChangeAvailability", new { Id = Model.Id })
+            </div>
+        }
     }
 </div>
