@@ -51,7 +51,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
                 where (search.Type == null || m.Type.StartsWith(search.Type))
                 where (search.CompatibleWithOtherAnimals == null || m.CompatibleWithOtherAnimals.StartsWith(search.CompatibleWithOtherAnimals))
                 where (search.CompatibleWithChildren == null || m.CompatibleWithChildren.StartsWith(search.CompatibleWithChildren))
-                where (search.Tag == null || m.Tag1.StartsWith(search.Tag))
+                where (search.Tag == null || m.Tag1.StartsWith(search.Tag) || m.Tag2.StartsWith(search.Tag) || m.Tag3.StartsWith(search.Tag) || m.Tag4.StartsWith(search.Tag) || m.Tag5.StartsWith(search.Tag))
                 where (search.DateOfBirthStartDT == null && search.DateOfBirthEndDT == null || m.DateOfBirth > search.DateOfBirthStartDT && m.DateOfBirth < search.DateOfBirthEndDT)
                 select m;
 

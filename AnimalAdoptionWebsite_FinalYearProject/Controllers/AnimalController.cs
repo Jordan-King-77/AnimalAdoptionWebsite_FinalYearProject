@@ -113,7 +113,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             return View("SearchAnimal", model);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ViewResult UploadImageToAnimal(Guid? Id)
         {
             ViewBag.Id = Id;
@@ -121,9 +121,9 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult UploadImageToAnimal(Guid? Id, HttpPostedFileBase Image/*UploadImageToAnimalViewModel model*//*Guid? Id, IFormFile Image*/)
+        public ActionResult UploadImageToAnimal(Guid? Id, HttpPostedFileBase Image)
         {
             try
             {
