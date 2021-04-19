@@ -9,82 +9,87 @@
 <div class="AnimalDetails">
     <img src="@Model.Image" height="400" width="400" />
 
-    <h3>@Model.Name</h3>
-    <h4>@Model.Type</h4>
-    <h4>@Model.Gender</h4>
-    <h4>Date of Birth: @Model.DateOfBirth</h4>
-    @if (Model.Rehomer != null)
-    {
-        <h4>Previous Owner: @Model.Rehomer.Email</h4>
-    }
-    else
-    {
-        <h4>Previous Owner: Unknown</h4>
-    }
-    <h4>Interested Users: @Model.InterestedUsers</h4>
-
-    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
-
-    <div>
-        <h4>@(Model.Name)'s Description</h4>
-        <div>@Model.Description</div>
-        <div>@Model.Behaviour</div>
-        <div>@Model.BackgroundInfo</div>
-    </div>
-
-    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
-
-    <div>
-        <h4>@(Model.Name)'s Needs</h4>
-        <div>@Model.HouseholdRequirements</div>
-        <div>@Model.MedicalHistory</div>
-        <div>@Model.DietaryNeeds</div>
-    </div>
-
-    <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
-
-    <div>
-        <h4>@(Model.Name)'s Tags</h4>
-        <div>@Model.Tag1</div>
-        <div>@Model.Tag2</div>
-        <div>@Model.Tag3</div>
-        <div>@Model.Tag4</div>
-        <div>@Model.Tag5</div>
-    </div>
-
-    @if (User.IsInRole("User"))
-    {
-        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
-
-        <div>
-            @Html.ActionLink("Register Interest", "RegisterInterest", new { Id = Model.Id })
-        </div>
-    }
-
     @if (User.IsInRole("Admin"))
     {
-        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+        <h3>Id: @Model.Id</h3>
+    }
 
-        @Html.ActionLink("Edit details", "EditAnimal", new { Id = Model.Id })
-
-        if (Model.Image == null)
+        <h3>@Model.Name</h3>
+        <h4>@Model.Type</h4>
+        <h4>@Model.Gender</h4>
+        <h4>Date of Birth: @Model.DateOfBirth</h4>
+        @if (Model.Rehomer != null)
         {
-            <div>
-                @Html.ActionLink("Upload image for animal", "UploadImageToAnimal", new { Id = Model.Id })
-            </div>
-        }
-
-        if (!Model.IsUnavailable)
-        {
-            <div>
-                @Html.ActionLink("Make this animal unavailable to view", "ChangeAvailability", new { Id = Model.Id })
-            </div>
+            <h4>Previous Owner: @Model.Rehomer.Email</h4>
         }
         else
         {
+            <h4>Previous Owner: Unknown</h4>
+        }
+        <h4>Interested Users: @Model.InterestedUsers</h4>
+
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+        <div>
+            <h4>@(Model.Name)'s Description</h4>
+            <div>@Model.Description</div>
+            <div>@Model.Behaviour</div>
+            <div>@Model.BackgroundInfo</div>
+        </div>
+
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+        <div>
+            <h4>@(Model.Name)'s Needs</h4>
+            <div>@Model.HouseholdRequirements</div>
+            <div>@Model.MedicalHistory</div>
+            <div>@Model.DietaryNeeds</div>
+        </div>
+
+        <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+        <div>
+            <h4>@(Model.Name)'s Tags</h4>
+            <div>@Model.Tag1</div>
+            <div>@Model.Tag2</div>
+            <div>@Model.Tag3</div>
+            <div>@Model.Tag4</div>
+            <div>@Model.Tag5</div>
+        </div>
+
+        @if (User.IsInRole("User"))
+        {
+            <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
             <div>
-                @Html.ActionLink("Make this animal available to view", "ChangeAvailability", new { Id = Model.Id })
+                @Html.ActionLink("Register Interest", "RegisterInterest", new { Id = Model.Id })
             </div>
         }
-    }
-</div>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <hr style="height:2px;border-width:0;color:#0094ff;background-color:#B5651D" />
+
+            @Html.ActionLink("Edit details", "EditAnimal", new { Id = Model.Id })
+
+            if (Model.Image == null)
+            {
+                <div>
+                    @Html.ActionLink("Upload image for animal", "UploadImageToAnimal", new { Id = Model.Id })
+                </div>
+            }
+
+            if (!Model.IsUnavailable)
+            {
+                <div>
+                    @Html.ActionLink("Make this animal unavailable to view", "ChangeAvailability", new { Id = Model.Id })
+                </div>
+            }
+            else
+            {
+                <div>
+                    @Html.ActionLink("Make this animal available to view", "ChangeAvailability", new { Id = Model.Id })
+                </div>
+            }
+        }
+    </div>

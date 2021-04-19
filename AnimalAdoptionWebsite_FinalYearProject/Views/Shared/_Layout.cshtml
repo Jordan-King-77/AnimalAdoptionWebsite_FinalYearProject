@@ -34,7 +34,7 @@
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Find an animal by Id", "FindAnimal", "Animal")</li>
+                        <li>@Html.ActionLink("Find an animal by Id", "FindAnimalById", "Animal")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

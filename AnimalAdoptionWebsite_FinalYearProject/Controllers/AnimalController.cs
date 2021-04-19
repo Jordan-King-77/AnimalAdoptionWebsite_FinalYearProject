@@ -124,13 +124,18 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult FindAnimal()
+        public ActionResult FindAnimalById()
         {
             return View();
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        public ActionResult FindAnimalById(Guid? id)
+        {
+            return RedirectToAction("FindAnimal", "Animal", new { id = id });
+        }
+
         public ActionResult FindAnimal(Guid? id)
         {
             if(id == null)

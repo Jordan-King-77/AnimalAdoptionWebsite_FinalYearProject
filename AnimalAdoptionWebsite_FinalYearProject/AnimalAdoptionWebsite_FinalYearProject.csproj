@@ -323,7 +323,7 @@
     <Content Include="Views\Animal\SearchAnimalResults.cshtml" />
     <Content Include="Views\Animal\UploadImageToAnimal.cshtml" />
     <Content Include="Views\Animal\EditAnimal.cshtml" />
-    <Content Include="Views\Animal\FindAnimal.cshtml" />
+    <Content Include="Views\Animal\FindAnimalById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

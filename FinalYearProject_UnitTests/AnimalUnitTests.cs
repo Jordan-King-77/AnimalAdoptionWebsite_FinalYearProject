@@ -100,15 +100,23 @@ namespace FinalYearProject_UnitTests
         }
 
         [TestMethod]
-        public void FindAnimalGet_ReturnsView()
+        public void FindAnimalByIdGet_ReturnsView()
         {
             var controller = new AnimalController(new FakeAnimalRepository());
 
-            Assert.IsInstanceOfType(controller.FindAnimal(), typeof(ViewResult));
+            Assert.IsInstanceOfType(controller.FindAnimalById(), typeof(ViewResult));
         }
 
         [TestMethod]
-        public void FindAnimalPost_ReturnsView()
+        public void FindAnimalByIdPost_ReturnsRedirectToRouteResult()
+        {
+            var controller = new AnimalController(new FakeAnimalRepository());
+
+            Assert.IsInstanceOfType(controller.FindAnimalById(Guid.NewGuid()), typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void FindAnimal_ReturnsView()
         {
             var controller = new AnimalController(new FakeAnimalRepository());
 
@@ -116,7 +124,7 @@ namespace FinalYearProject_UnitTests
         }
 
         [TestMethod]
-        public void FindAnimalPost_IdNull()
+        public void FindAnimal_IdNull()
         {
             var controller = new AnimalController(new FakeAnimalRepository());
 
@@ -129,7 +137,7 @@ namespace FinalYearProject_UnitTests
         }
 
         [TestMethod]
-        public void FindAnimalPost_AnimalNull()
+        public void FindAnimal_AnimalNull()
         {
             var controller = new AnimalController(new FakeAnimalRepository(false));
 
