@@ -17,36 +17,6 @@ namespace FinalYearProject_UnitTests
             Assert.IsInstanceOfType(controller.CreateAnimal(), typeof(ViewResult));
         }
 
-        //[TestMethod]
-        //public void CreateAnimalPost_ReturnsView()
-        //{
-        //    var controller = new AnimalController(new FakeAnimalRepository());
-
-        //    AnimalViewModel m = new AnimalViewModel
-        //    {
-        //        Name = "Test",
-        //        Type = "Dog",
-        //        Gender = "Male",
-        //        DateOfBirthString = "20 April 2020",
-        //        Description = "Test",
-        //        MedicalHistory = "Test",
-        //        Behaviour = "Test",
-        //        BackgroundInfo = "Test",
-        //        HouseholdRequirements = "Test",
-        //        DietaryNeeds = "Test",
-        //        CompatibleWithOtherAnimals = "Yes",
-        //        CompatibleWithChildren = "Yes",
-        //        Tag1 = "Playful",
-        //        Tag2 = "Energetic",
-        //        Tag3 = "Happy",
-        //        Tag4 = "Affectionate",
-        //        Tag5 = "Loving",
-        //        RehomerEmail = "steve@gmail.com",
-        //    };
-
-        //    Assert.IsInstanceOfType(controller.CreateAnimal(m), typeof(ViewResult));
-        //}
-
         [TestMethod]
         public void CreateAnimalPost_InvalidModel()
         {

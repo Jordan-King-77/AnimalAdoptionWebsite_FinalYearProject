@@ -16,6 +16,7 @@ namespace AnimalAdoptionWebsite_FinalYearProject.Models
         {
             context.Animals.Add(entity);
             context.SaveChanges();
+
         }
 
         public UserManager<ApplicationUser> CreateUserStore()
